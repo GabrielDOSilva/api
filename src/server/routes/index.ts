@@ -1,5 +1,9 @@
 import { Router } from 'express';
 import { StatusCodes } from 'http-status-codes';
+import { UsersController } from './../controllers';
+
+
+
 const router = Router();
 
 
@@ -9,11 +13,7 @@ router.get('/', (_, res) => {
 
 });
 
-router.post('/test', (req, res) => {
-    //console.log(req.body);
+router.post('/users', UsersController.create);
 
-    return res.status(StatusCodes.UNAUTHORIZED).json(req.body);
-
-});
 
 export { router };
