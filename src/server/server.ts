@@ -8,5 +8,4 @@ server.get('/', (req, res) => {
 
 });
 
-
-export { server }
+export { server };
