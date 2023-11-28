@@ -1,5 +1,6 @@
 import express from 'express';
 import 'dotenv/config';
+import './sherad/services/TranslationsYup';
 import { router } from './routes';
 
 

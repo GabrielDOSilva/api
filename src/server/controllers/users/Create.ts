@@ -1,9 +1,26 @@
-import { Request, Response } from 'express';
+import { Request, RequestHandler, Response } from 'express';
+
+import * as yup from 'yup';
+import { validation } from '../../sherad/middlewares';
+import { StatusCodes } from 'http-status-codes';
 
 
 
-export const create = (req: Request, res: Response) => {
+interface IUsers {
+    name: string;
+    email: string;
+}
 
+export const createValidation = validation((getSchema) => ({
+    body: getSchema<IUsers>(yup.object().shape({
+        name: yup.string().required(),
+        email: yup.string().required().email()
+    })),
 
-    return res.send('Create!');
+}));
+
+export const create: RequestHandler = async (req: Request<{}, {}, IUsers>, res: Response) => {
+    console.log(req.body);
+
+    return res.status(StatusCodes.INTERNAL_SERVER_ERROR).send('Não implementado!');
 };

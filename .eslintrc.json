@@ -28,6 +28,7 @@
             "error",
             "always"
         ],
+        "@typescript-eslint/ban-types": "off",
         "@typescript-eslint.io/rules/no-unused-vars": "off"
     }
 }
