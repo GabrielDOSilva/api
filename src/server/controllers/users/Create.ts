@@ -18,7 +18,7 @@ export const createValidation = validation((getSchema) => ({
         name: yup.string().required(),
         sobrenome: yup.string().required(),
         email: yup.string().required().email(),
-        cpf: yup.number().required().min(11)
+        cpf: yup.number().required().min(11),
     })),
 
 }));
@@ -26,5 +26,5 @@ export const createValidation = validation((getSchema) => ({
 export const create: RequestHandler = async (req: Request<{}, {}, IUsers>, res: Response) => {
     console.log(req.body);
 
-    return res.status(StatusCodes.INTERNAL_SERVER_ERROR).send('Não implementado!');
+    return res.status(StatusCodes.CREATED).json(1);
 };
