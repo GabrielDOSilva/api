@@ -8,11 +8,14 @@
   "scripts": {
     "start": "ts-node-dev ./src/index.ts",
     "postinstall": "tsc",
+<<<<<<< HEAD
     "production": "node ./build/index.js",
     "knex:rollback-all": "knex --knexfile ./src/server/database/knex/Environment.ts migrate:rollback --all",
     "knex:rollback": "knex --knexfile ./src/server/database/knex/Environment.ts migrate:rollback",
     "knex:migrate": "knex --knexfile ./src/server/database/knex/Environment.ts migrate:latest",
     "knex:seed": "knex --knexfile ./src/server/database/knex/Environment.ts seed:run",
+=======
+>>>>>>> 481968adbfa0103e574a3b57dc5f5fe466d498cd
     "test": "jest"
   },
   "dependencies": {
