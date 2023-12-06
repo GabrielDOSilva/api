@@ -2,5 +2,6 @@
 
 export enum ETableNames {
   users = 'users',
-  os = 'os'
+  os = 'os',
+  clients = 'clients'
 }
