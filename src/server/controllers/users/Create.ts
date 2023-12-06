@@ -1,9 +1,10 @@
 import { Request, RequestHandler, Response } from 'express';
 
 import * as yup from 'yup';
-import { validation } from '../../sherad/middlewares';
+import { validation } from '../../shared/middleware';
 import { StatusCodes } from 'http-status-codes';
 import { IUsers } from '../../database/models';
+import { UsersProvider } from '../../database/providers/users';
 
 
 
@@ -20,7 +21,14 @@ export const createValidation = validation((getSchema) => ({
 }));
 
 export const create: RequestHandler = async (req: Request<{}, {}, IUsers>, res: Response) => {
-    console.log(req.body);
+    const result = await UsersProvider.create(req.body);
+    if (result instanceof Error) {
+        return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
+            erros: {
+                default: result.message
+            }
+        });
+    }
 
-    return res.status(StatusCodes.CREATED).json(1);
+    return res.status(StatusCodes.CREATED).json(result);
 };
